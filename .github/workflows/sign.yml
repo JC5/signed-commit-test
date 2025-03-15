@@ -43,3 +43,5 @@ jobs:
 
           # create PR
           gh pr create -B main -H $BRANCHNAME --title 'Release thing test' --body 'Created by Github action'
+    env:
+      GH_TOKEN: ${{ github.token }}
