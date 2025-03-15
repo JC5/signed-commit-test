@@ -43,6 +43,6 @@ jobs:
 
           # create PR
           gh pr create -B main -H $BRANCHNAME --title 'Release thing test' --body 'Created by Github action'
-          gh pr merge -b 'Auto merge bla bla' -d
+          gh pr merge -b 'Auto merge bla bla' -d --rebase
     env:
       GH_TOKEN: ${{ github.token }}
