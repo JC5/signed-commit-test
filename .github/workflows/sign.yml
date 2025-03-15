@@ -40,6 +40,6 @@ jobs:
           git add -A
           git commit -m "Auto commit for release '$version' on $(date +'%Y-%m-%d')" || true
           git push
-      - name: Create Pull Request
-        id: cpr
-        uses: peter-evans/create-pull-request@v7
+
+          # create PR
+          gh pr create -B main -H $BRANCHNAME --title 'Release thing test' --body 'Created by Github action'
