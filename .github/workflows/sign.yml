@@ -54,7 +54,8 @@ jobs:
           
           # checkout main branch after merge, add a tag.
           echo 'checkout'
-          git checkout --track origin/main
+          git checkout main
+          git merge origin/main
           echo 'pull'
           git pull
           echo 'tag'
