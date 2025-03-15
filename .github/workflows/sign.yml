@@ -1,0 +1,33 @@
+name: 'Sign'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Switch branch
+        run: |
+          git config user.name github-actions
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git checkout --track origin/main
+          git pull
+
+          # do some configuration
+          sudo timedatectl set-timezone Europe/Amsterdam
+          git config advice.addIgnoredFile false
+          
+          echo $(date) > file.txt
+
+          # add all content, except output.txt (this contains the changelog and/or the download instructions)
+          echo 'Add all and reset output.txt'
+          git add -A
+          git commit -m "Auto commit for release '$version' on $(date +'%Y-%m-%d')" || true
+          git push
+        env:
+          GH_TOKEN: ${{ github.token }}
