@@ -52,10 +52,8 @@ jobs:
           gh pr create -B main -H $BRANCHNAME --title 'Release thing test' --body 'Created by Github action'
           gh pr merge -b 'Auto merge bla bla' -d --rebase
           
-          # checkout develop again, and pull it.
-          
-          # checkout develop and track it from origin
-          git checkout develop
+          # checkout main branch after merge, add a tag.
+          git checkout --track origin/main
           git pull
           git tag -a $BRANCHNAME -m "Development release ABC on $(date +'%Y-%m-%d')"
           git push
