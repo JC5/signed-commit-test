@@ -61,6 +61,6 @@ jobs:
           echo 'tag'
           git tag -a tag-$BRANCHNAME -m "Development release ABC on $(date +'%Y-%m-%d')"
           echo 'push2'
-          git push
+          git push --tags
     env:
       GH_TOKEN: ${{ github.token }}
