@@ -26,6 +26,11 @@ jobs:
           # do some configuration
           sudo timedatectl set-timezone Europe/Amsterdam
           git config advice.addIgnoredFile false
+
+          # create new release branches
+          BRANCHNAME=release-$(date +'%s')
+          git checkout -b $BRANCHNAME
+
           
           echo $(date) > file.txt
 
